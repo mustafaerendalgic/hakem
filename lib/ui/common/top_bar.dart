@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:isg_ihlal/data/session/navigation_enum.dart';
-import 'package:isg_ihlal/data/session/session.dart';
+import 'package:isg_ihlal/data/session/navigation_session.dart';
 import 'package:isg_ihlal/theme/app_colors.dart';
 import 'package:isg_ihlal/theme/text_styles.dart';
 
@@ -21,7 +21,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
             Spacer(),
             IconButton(
               onPressed: () {
-                Session.instance.updateIndex(NavigationElement.archives);
+                NavigationSession.instance.updateIndex(NavigationElement.archives);
               },
               icon: Icon(
                 Icons.archive_outlined,
@@ -32,7 +32,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             IconButton(
               onPressed: () {
-                Session.instance.updateIndex(NavigationElement.notifications);
+                NavigationSession.instance.updateIndex(NavigationElement.notifications);
               },
               icon: Icon(
                 Icons.notification_add_rounded,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:isg_ihlal/ui/common/top_bar.dart';
 
 class AnalysisScreen extends StatelessWidget {
   AnalysisScreen({super.key});

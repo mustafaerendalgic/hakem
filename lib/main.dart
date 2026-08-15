@@ -1,10 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:isg_ihlal/data/cubits/authentication_cubit.dart';
 import 'package:isg_ihlal/data/cubits/violation_cubit.dart';
 import 'package:isg_ihlal/data/session/navigation_enum.dart';
-import 'package:isg_ihlal/data/session/session.dart';
+import 'package:isg_ihlal/data/session/navigation_session.dart';
 import 'package:isg_ihlal/data/states/authentication_states.dart';
+import 'package:isg_ihlal/firebase_options.dart';
 import 'package:isg_ihlal/theme/app_colors.dart';
 import 'package:isg_ihlal/theme/text_styles.dart';
 import 'package:isg_ihlal/ui/account/account_screen.dart';
@@ -16,7 +18,11 @@ import 'package:isg_ihlal/ui/home/home_page.dart';
 import 'package:isg_ihlal/ui/notifications/notifications_screen.dart';
 import 'package:isg_ihlal/ui/photo/photo_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MainApp());
 }
 
@@ -38,39 +44,50 @@ class ISGApp extends StatefulWidget {
 }
 
 class ISGState extends State<ISGApp> {
-
   @override
   Widget build(BuildContext context) {
-
     return MultiBlocProvider(
       providers: [
-        BlocProvider<AuthenticationCubit>(create: (context) => AuthenticationCubit()),
-        BlocProvider(create: (context) => ViolationCubit())
+        BlocProvider<AuthenticationCubit>(
+          create: (context) => AuthenticationCubit(),
+        ),
+        BlocProvider(create: (context) => ViolationCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: BlocBuilder<AuthenticationCubit, AuthenticationStates>(
           builder: (context, state) {
-            final Session session = Session.instance;
+            final NavigationSession session = NavigationSession.instance;
             if (state is AuthenticatedState) {
               return ListenableBuilder(
-                listenable: Session.instance,
-                builder: (context, child) {                  
+                listenable: NavigationSession.instance,
+                builder: (context, child) {
+                  Widget activePage;
+                  switch (session.navigationIndex) {
+                    case NavigationElement.home:
+                      activePage = HomePage();
+                      context.read<ViolationCubit>().listenToTheList();
+                    case NavigationElement.photo:
+                      activePage = PhotoPage();
+                    case NavigationElement.analysis:
+                      activePage = AnalysisScreen();
+                    case NavigationElement.account:
+                      activePage = AccountScreen();
+                    case NavigationElement.archives:
+                      context.read<ViolationCubit>().listenToTheArchives();
+                      activePage = ArchivePage();
+                    case NavigationElement.notifications:
+                      activePage = NotificationsScreen();
+                    default:
+                      activePage = HomePage();
+                  }
                   return Scaffold(
                     appBar: TopAppBar(),
-                    body: switch (session.navigationIndex) {
-                      NavigationElement.home => HomePage(),
-                      NavigationElement.photo=> PhotoPage(),
-                      NavigationElement.analysis => AnalysisScreen(),
-                      NavigationElement.account => AccountScreen(),
-                      NavigationElement.archives => ArchivePage(),
-                      NavigationElement.notifications => NotificationsScreen(),
-                      _ => HomePage(),
-                    },
+                    body: activePage,
                     bottomNavigationBar: Container(
                       color: AppColors.primary,
                       height: 80,
-                      child: Row(                        
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           BottomNavItem(
@@ -95,7 +112,8 @@ class ISGState extends State<ISGApp> {
                             "Analiz",
                             Icons.analytics_rounded,
                             NavigationElement.analysis,
-                            session.navigationIndex == NavigationElement.analysis,
+                            session.navigationIndex ==
+                                NavigationElement.analysis,
                             (index) {
                               session.updateIndex(index);
                             },
@@ -104,7 +122,8 @@ class ISGState extends State<ISGApp> {
                             "Hesap",
                             Icons.person_2_rounded,
                             NavigationElement.account,
-                            session.navigationIndex == NavigationElement.account,
+                            session.navigationIndex ==
+                                NavigationElement.account,
                             (index) {
                               session.updateIndex(index);
                             },
@@ -115,8 +134,9 @@ class ISGState extends State<ISGApp> {
                   );
                 },
               );
-            } else{
-                return AuthenticationPage();}
+            } else {
+              return AuthenticationPage();
+            }
           },
         ),
       ),

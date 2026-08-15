@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:isg_ihlal/data/cubits/authentication_cubit.dart';
@@ -16,6 +15,9 @@ class AuthenticationPage extends StatelessWidget {
         child: BlocBuilder<AuthenticationCubit, AuthenticationStates>(
           bloc: context.read<AuthenticationCubit>(),
           builder: (context, state) {
+            if (state is AuthenticatingState) {
+              return Center(child: CircularProgressIndicator(),);
+            }
             return Container(
               padding: EdgeInsets.symmetric(horizontal: 32),
               child: Column(
@@ -107,7 +109,10 @@ class AuthenticationPage extends StatelessWidget {
                         ),
                         child: TextButton(
                           onPressed: () {
-                            context.read<AuthenticationCubit>().authenticate();
+                            context.read<AuthenticationCubit>().authenticate(
+                              "test@example.com",
+                              "123456",
+                            );
                           },
                           child: Text(
                             "Giriş Yap",

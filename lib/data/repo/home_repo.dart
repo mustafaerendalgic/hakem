@@ -7,7 +7,7 @@ class HomeRepo {
 
   Stream<List<Violation>> get violationList async* {
     await Future.delayed(Duration(seconds: 1));
-    yield <Violation>[];
+    yield <Violation>[Violation(0, "", "Personelin yüksek riskli bir bölgede baret takmadığı tespit edilmiştir.", "Silo Sahası, Cihaz 3", "Yüksek Riskli İhlal!", "05.08.2026", "14.53", "Yeni", 3, null,)];
   }
 
   Stream<List<Violation>> get archives async* {

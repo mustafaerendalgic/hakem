@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract final class AppColors {
-  static const Color porselen = Color(0xFFF0F4EF);
+  static const Color kirli = Color(0xFFd6d6d6);
 
   static const Color yesil = Color(0xFF214E34);
 

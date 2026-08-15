@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:isg_ihlal/data/cubits/authentication_cubit.dart';
 import 'package:isg_ihlal/data/cubits/violation_cubit.dart';
 import 'package:isg_ihlal/data/entity/violation.dart';
-import 'package:isg_ihlal/data/states/authentication_states.dart';
 import 'package:isg_ihlal/data/states/home_states.dart';
-import 'package:isg_ihlal/theme/text_styles.dart';
 import 'package:isg_ihlal/ui/common/search_bar.dart';
 import 'package:isg_ihlal/ui/common/sorry_empty.dart';
-import 'package:isg_ihlal/ui/common/top_bar.dart';
-import 'package:lottie/lottie.dart';
+import 'package:isg_ihlal/ui/common/violation_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -44,6 +40,16 @@ class HomePage extends StatelessWidget {
                         children: [SearchBarSection()],
                       ),
                     ),
+                  ),
+                  SliverFixedExtentList(
+                    delegate: SliverChildBuilderDelegate((
+                      BuildContext context,
+                      int index,
+                    ) {
+                      final item = violations[index];
+                      return ViolationCard(item);
+                    },childCount: violations.length),
+                    itemExtent: 435,
                   ),
                 ],
               ),

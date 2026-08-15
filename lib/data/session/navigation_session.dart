@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:isg_ihlal/data/session/navigation_enum.dart';
 
-class Session with ChangeNotifier {
-  Session._internal();
-  static final Session instance = Session._internal();
-  factory Session() => instance;
+class NavigationSession with ChangeNotifier {
+  NavigationSession._init();
+  static final NavigationSession instance = NavigationSession._init();
+  factory NavigationSession() => instance;
 
   NavigationElement _navigationIndex = NavigationElement.home;
   NavigationElement get navigationIndex => _navigationIndex;

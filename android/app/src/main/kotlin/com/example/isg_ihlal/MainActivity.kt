@@ -1,4 +1,4 @@
-package com.example.isg_ihlal
+package com.eren.isg_ihlal
 
 import io.flutter.embedding.android.FlutterActivity
 

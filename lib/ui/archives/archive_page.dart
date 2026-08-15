@@ -4,7 +4,6 @@ import 'package:isg_ihlal/data/cubits/violation_cubit.dart';
 import 'package:isg_ihlal/data/entity/violation.dart';
 import 'package:isg_ihlal/data/states/home_states.dart';
 import 'package:isg_ihlal/ui/common/sorry_empty.dart';
-import 'package:isg_ihlal/ui/common/top_bar.dart';
 
 class ArchivePage extends StatelessWidget {
   ArchivePage({super.key});
