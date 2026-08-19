@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/date_symbol_data_file.dart';
 import 'package:isg_ihlal/data/entity/violation.dart';
 import 'package:isg_ihlal/theme/app_colors.dart';
 import 'package:isg_ihlal/theme/text_styles.dart';

@@ -4,7 +4,6 @@ import 'package:isg_ihlal/data/cubits/notification_cubit.dart';
 import 'package:isg_ihlal/data/cubits/violation_cubit.dart';
 import 'package:isg_ihlal/data/session/navigation_enum.dart';
 import 'package:isg_ihlal/data/session/navigation_session.dart';
-import 'package:isg_ihlal/data/states/home_states.dart';
 import 'package:isg_ihlal/data/states/notification_states.dart';
 import 'package:isg_ihlal/theme/app_colors.dart';
 import 'package:isg_ihlal/theme/text_styles.dart';

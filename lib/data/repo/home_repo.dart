@@ -1,13 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:isg_ihlal/data/entity/violation.dart';
 import 'package:isg_ihlal/data/repo/firebase_provider.dart';
 
 class HomeRepo {
   FirebaseProvider firebaseProvider;
   HomeRepo._internal(this.firebaseProvider);
-  static final HomeRepo instance = HomeRepo._internal(FirebaseProvider.instance);
+  static final HomeRepo instance = HomeRepo._internal(
+    FirebaseProvider.instance,
+  );
   factory HomeRepo() => instance;
 
   Future<void> addViolations() async {
@@ -32,13 +32,15 @@ class HomeRepo {
     final String? uid = firebaseProvider.uid;
     if (uid == null) return Stream.value([]);
 
-    return firebaseProvider.violationCollection.orderBy('date').snapshots().map((snapshot) {
-      return snapshot.docs.map((doc) {
-        final map = doc.data() as Map<String, dynamic>;
-        final Violation violation = Violation.fromMap(doc.id, map);
-        return violation;
-      }).toList();
-    });
+    return firebaseProvider.violationCollection.orderBy('date').snapshots().map(
+      (snapshot) {
+        return snapshot.docs.map((doc) {
+          final map = doc.data() as Map<String, dynamic>;
+          final Violation violation = Violation.fromMap(doc.id, map);
+          return violation;
+        }).toList();
+      },
+    );
   }
 
   Stream<List<Violation>> get archives async* {

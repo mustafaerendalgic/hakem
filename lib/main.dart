@@ -82,8 +82,6 @@ class ISGState extends State<ISGApp> {
                       activePage = ArchivePage();
                     case NavigationElement.notifications:
                       activePage = NotificationsScreen();
-                    default:
-                      activePage = const HomePage();
                   }
 
                   return Scaffold(
@@ -117,7 +115,8 @@ class ISGState extends State<ISGApp> {
                             "Analiz",
                             Icons.analytics_rounded,
                             NavigationElement.analysis,
-                            session.navigationIndex == NavigationElement.analysis,
+                            session.navigationIndex ==
+                                NavigationElement.analysis,
                             (index) {
                               session.updateIndex(index);
                             },
@@ -126,7 +125,8 @@ class ISGState extends State<ISGApp> {
                             "Hesap",
                             Icons.person_2_rounded,
                             NavigationElement.account,
-                            session.navigationIndex == NavigationElement.account,
+                            session.navigationIndex ==
+                                NavigationElement.account,
                             (index) {
                               session.updateIndex(index);
                             },
