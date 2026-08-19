@@ -15,3 +15,5 @@ class ViolationErrorState extends ViolationStates {
   String message;
   ViolationErrorState(this.message);
 }
+
+

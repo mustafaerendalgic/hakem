@@ -9,6 +9,14 @@ class NavigationSession with ChangeNotifier {
   NavigationElement _navigationIndex = NavigationElement.home;
   NavigationElement get navigationIndex => _navigationIndex;
 
+  AuthNavigationElement _authNavigationElement = AuthNavigationElement.login;
+  AuthNavigationElement get authNavigationElement => _authNavigationElement;
+
+  void updateAuthIndex(AuthNavigationElement i) {
+    _authNavigationElement = i;
+    notifyListeners();
+  }
+
   void updateIndex(NavigationElement i) {
     _navigationIndex = i;
     notifyListeners();

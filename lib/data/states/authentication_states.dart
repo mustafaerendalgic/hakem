@@ -20,8 +20,24 @@ class AuthenticationErrorState extends AuthenticationStates {
   AuthenticationErrorState(this.e);
 }
 
+class SignUpInitial extends AuthenticationStates {}
+
+class SigningUpState extends AuthenticationStates {
+  final String eMail;
+  final String password;
+  SigningUpState(this.eMail, this.password);
+}
+
+class SignedUpState extends AuthenticationStates {}
+
+class SigningUpErrorState extends AuthenticationStates {
+  String e;
+  SigningUpErrorState(this.e);
+}
+
 abstract class AuthRepository {
   Stream<User?> get authStateChanges;
   Future<void> signIn(String eMail, String password);
   Future<void> signOut();
+  Future<void> signUp(String eMail, String password);
 }

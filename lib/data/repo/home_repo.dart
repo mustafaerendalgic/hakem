@@ -1,18 +1,48 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:isg_ihlal/data/entity/violation.dart';
+import 'package:isg_ihlal/data/repo/firebase_provider.dart';
 
 class HomeRepo {
-  HomeRepo._internal();
-  static final HomeRepo instance = HomeRepo._internal();
+  FirebaseProvider firebaseProvider;
+  HomeRepo._internal(this.firebaseProvider);
+  static final HomeRepo instance = HomeRepo._internal(FirebaseProvider.instance);
   factory HomeRepo() => instance;
 
-  Stream<List<Violation>> get violationList async* {
-    await Future.delayed(Duration(seconds: 1));
-    yield <Violation>[Violation(0, "", "Personelin yüksek riskli bir bölgede baret takmadığı tespit edilmiştir.", "Silo Sahası, Cihaz 3", "Yüksek Riskli İhlal!", "05.08.2026", "14.53", "Yeni", 3, null,)];
+  Future<void> addViolations() async {
+    final String? uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) return;
+    final Violation violation = Violation(
+      '0',
+      "https://firebasestorage.googleapis.com/v0/b/isgprojesi-dd27c.firebasestorage.app/o/image%202%20(1).png?alt=media&token=8dfe7eba-e3cf-4e56-aae8-0d350c4da2e0",
+      "Personelin riskli bir bölgede baret takmadığı tespit edilmiştir.",
+      "Silo Sahası, Cihaz 3",
+      ViolationRisk.lethal,
+      DateTime.now(),
+      null,
+      null,
+    );
+    firebaseProvider.violationCollection.add(violation.toMap());
+  }
+
+  Future<void> updateSeenStatus(Violation violation) async {}
+
+  Stream<List<Violation>> get violationList {
+    final String? uid = firebaseProvider.uid;
+    if (uid == null) return Stream.value([]);
+
+    return firebaseProvider.violationCollection.orderBy('date').snapshots().map((snapshot) {
+      return snapshot.docs.map((doc) {
+        final map = doc.data() as Map<String, dynamic>;
+        final Violation violation = Violation.fromMap(doc.id, map);
+        return violation;
+      }).toList();
+    });
   }
 
   Stream<List<Violation>> get archives async* {
     await Future.delayed(Duration(seconds: 1));
     yield <Violation>[];
   }
-
 }

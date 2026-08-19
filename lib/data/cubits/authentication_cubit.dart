@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:isg_ihlal/data/repo/authenticator_imp.dart';
+import 'package:isg_ihlal/data/repo/auth_repo.dart';
 import 'package:isg_ihlal/data/states/authentication_states.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationStates> {
@@ -33,6 +33,15 @@ class AuthenticationCubit extends Cubit<AuthenticationStates> {
       emit(NotAuthenticatedState());
     } catch (e) {
       emit(AuthenticationErrorState(e.toString()));
+    }
+  }
+
+  Future<void> signUp(String eMail, String password) async {
+    emit(SigningUpState(eMail, password));
+    try {
+      await _authRepo.signUp(eMail, password);
+    } catch (e) {
+      emit(SigningUpErrorState(e.toString()));
     }
   }
 }

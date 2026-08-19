@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:isg_ihlal/data/cubits/authentication_cubit.dart';
+import 'package:isg_ihlal/data/session/navigation_enum.dart';
+import 'package:isg_ihlal/data/session/navigation_session.dart';
 import 'package:isg_ihlal/data/states/authentication_states.dart';
 import 'package:isg_ihlal/theme/app_colors.dart';
 import 'package:isg_ihlal/theme/text_styles.dart';
 
-class AuthenticationPage extends StatelessWidget {
-  AuthenticationPage({super.key});
+class LoginPage extends StatelessWidget {
+  LoginPage({super.key});
   @override
   Widget build(BuildContext context) {
     final double _outlineWidth = 2;
@@ -16,7 +18,7 @@ class AuthenticationPage extends StatelessWidget {
           bloc: context.read<AuthenticationCubit>(),
           builder: (context, state) {
             if (state is AuthenticatingState) {
-              return Center(child: CircularProgressIndicator(),);
+              return Center(child: CircularProgressIndicator());
             }
             return Container(
               padding: EdgeInsets.symmetric(horizontal: 32),
@@ -123,6 +125,22 @@ class AuthenticationPage extends StatelessWidget {
                         ),
                       ),
                     ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 32.0),
+                    child: TextButton(
+                      onPressed: () {
+                        NavigationSession.instance.updateAuthIndex(
+                          AuthNavigationElement.signup,
+                        );
+                      },
+                      child: Text(
+                        "Kayıt Ol",
+                        style: TextStyles.bodyBold.copyWith(
+                          color: AppColors.primary,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
