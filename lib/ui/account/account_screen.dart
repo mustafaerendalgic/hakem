@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:isg_ihlal/data/cubits/authentication_cubit.dart';
+import 'package:isg_ihlal/data/session/navigation_enum.dart';
+import 'package:isg_ihlal/data/session/navigation_session.dart';
 import 'package:isg_ihlal/data/states/authentication_states.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -15,7 +17,10 @@ class AccountScreen extends StatelessWidget {
             child: Center(
               child: IconButton(
                 onPressed: () {
-                  context.read<AuthenticationCubit>().deAuthenticate();
+                  context.read<AuthenticationCubit>().deAuthenticate(() {NavigationSession.instance.updateIndex(
+                    NavigationElement.home,
+                  );});
+                  
                 },
                 icon: Icon(Icons.logout),
               ),

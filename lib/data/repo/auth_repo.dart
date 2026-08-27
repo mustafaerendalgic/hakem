@@ -1,16 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:isg_ihlal/data/repo/firebase_provider.dart';
 import 'package:isg_ihlal/data/states/authentication_states.dart';
 
 class AuthManagerImp implements AuthRepository {
-  AuthManagerImp._init();
-  static final AuthManagerImp instance = AuthManagerImp._init();
+  FirebaseProvider firebaseProvider = FirebaseProvider.instance;
+  AuthManagerImp._init(this.firebaseProvider);
+  static final AuthManagerImp instance = AuthManagerImp._init(
+    FirebaseProvider.instance,
+  );
   factory AuthManagerImp() => instance;
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  CollectionReference _usersRef = FirebaseFirestore.instance.collection(
-    "users",
-  );
+  FirebaseAuth get _auth => firebaseProvider.auth;
+  CollectionReference get _usersRef => firebaseProvider.userCollection;
 
   @override
   Stream<User?> get authStateChanges {
@@ -36,17 +38,16 @@ class AuthManagerImp implements AuthRepository {
       password: password,
     );
     User? user = userCredential.user;
+    //değilse
     if (user != null) {
       final userDocRef = _usersRef.doc(user.uid);
       final doc = await userDocRef.get();
       if (!doc.exists) {
-        await userDocRef.set(
-          {
-            'createdAt': FieldValue.serverTimestamp(),
-            'email': user.email,
-            'lastReadNotification': FieldValue.serverTimestamp()
-          }
-        );
+        await userDocRef.set({
+          'createdAt': FieldValue.serverTimestamp(),
+          'email': user.email,
+          'lastReadNotification': FieldValue.serverTimestamp(),
+        });
       }
     }
   }

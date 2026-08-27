@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:isg_ihlal/data/entity/violation.dart';
+import 'package:isg_ihlal/data/entity/violation_types.dart';
+import 'package:isg_ihlal/data/repo/catalog/violation_catalog.dart';
 import 'package:isg_ihlal/data/repo/firebase_provider.dart';
 
 class HomeRepo {
@@ -18,15 +21,14 @@ class HomeRepo {
       "https://firebasestorage.googleapis.com/v0/b/isgprojesi-dd27c.firebasestorage.app/o/image%202%20(1).png?alt=media&token=8dfe7eba-e3cf-4e56-aae8-0d350c4da2e0",
       "Personelin riskli bir bölgede baret takmadığı tespit edilmiştir.",
       "Silo Sahası, Cihaz 3",
-      ViolationRisk.lethal,
       DateTime.now(),
+      ViolationCatalog.violationType[0],
       null,
       null,
     );
-    firebaseProvider.violationCollection.add(violation.toMap());
+    violation['date'] = FieldValue.serverTimestamp();
+    await firebaseProvider.violationCollection.add(violation.toMap());
   }
-
-  Future<void> updateSeenStatus(Violation violation) async {}
 
   Stream<List<Violation>> get violationList {
     final String? uid = firebaseProvider.uid;

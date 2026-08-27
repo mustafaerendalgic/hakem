@@ -16,21 +16,21 @@ class SearchBarSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: 8,
         children: [
-          Icon(Icons.search_rounded, size: 24, color: Colors.black,),
+          Icon(Icons.search_rounded, size: 24, color: Colors.black),
           Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  isDense: true,
-                  contentPadding: EdgeInsets.all(0),
-                  fillColor: Colors.transparent,
-                  hintText: "Bir ihlal arayın...",
-                  hintStyle: TextStyles.navigationLabelRegular,
-                ),
+            child: TextField(
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                isDense: true,
+                contentPadding: EdgeInsets.all(0),
+                fillColor: Colors.transparent,
+                hintText: "Bir ihlal arayın...",
+                hintStyle: TextStyles.navigationLabelRegular,
               ),
-            ),          
+            ),
+          ),
           Spacer(),
-          IconButton(onPressed: () {}, icon: Icon(Icons.sort, size: 24,)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.sort, size: 24)),
         ],
       ),
     );

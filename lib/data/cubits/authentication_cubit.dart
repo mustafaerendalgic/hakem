@@ -1,3 +1,4 @@
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:isg_ihlal/data/repo/auth_repo.dart';
 import 'package:isg_ihlal/data/states/authentication_states.dart';
@@ -26,9 +27,10 @@ class AuthenticationCubit extends Cubit<AuthenticationStates> {
     }
   }
 
-  Future<void> deAuthenticate() async {
+  Future<void> deAuthenticate(VoidCallback callback) async {
     try {
       await _authRepo.signOut();
+      callback();
       emit(NotAuthenticatedState());
     } catch (e) {
       emit(AuthenticationErrorState(e.toString()));

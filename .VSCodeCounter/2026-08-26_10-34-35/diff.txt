@@ -1,0 +1,67 @@
+Date : 2026-08-26 10:34:35
+Directory : c:\projeler\isg\isg_ihlal\lib
+Total : 28 files,  572 codes, 1 comments, 90 blanks, all 663 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Dart     |         28 |        572 |          1 |         90 |        663 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                     | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                        |         28 |        572 |          1 |         90 |        663 |
+| . (Files)                                                                |          1 |          7 |          0 |          1 |          8 |
+| data                                                                     |         18 |        310 |          1 |         60 |        371 |
+| data\cubits                                                              |          4 |         62 |          0 |         16 |         78 |
+| data\entity                                                              |          2 |         43 |          0 |          6 |         49 |
+| data\repo                                                                |          8 |        147 |          1 |         22 |        170 |
+| data\repo (Files)                                                        |          5 |         53 |          1 |          7 |         61 |
+| data\repo\catalog                                                        |          3 |         94 |          0 |         15 |        109 |
+| data\session                                                             |          3 |         32 |          0 |          4 |         36 |
+| data\states                                                              |          1 |         26 |          0 |         12 |         38 |
+| ui                                                                       |          9 |        255 |          0 |         29 |        284 |
+| ui\account                                                               |          1 |          4 |          0 |          1 |          5 |
+| ui\authentication                                                        |          2 |         27 |          0 |          5 |         32 |
+| ui\common                                                                |          2 |          2 |          0 |          0 |          2 |
+| ui\notifications                                                         |          1 |         26 |          0 |          4 |         30 |
+| ui\photo                                                                 |          3 |        196 |          0 |         19 |        215 |
++--------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                 | language | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\projeler\isg\isg_ihlal\lib\data\cubits\authentication_cubit.dart      | Dart     |          1 |          0 |          0 |          1 |
+| c:\projeler\isg\isg_ihlal\lib\data\cubits\camera_cubit.dart              | Dart     |         54 |          0 |         13 |         67 |
+| c:\projeler\isg\isg_ihlal\lib\data\cubits\notification_cubit.dart        | Dart     |          3 |          0 |          1 |          4 |
+| c:\projeler\isg\isg_ihlal\lib\data\cubits\violation_cubit.dart           | Dart     |          4 |          0 |          2 |          6 |
+| c:\projeler\isg\isg_ihlal\lib\data\entity\violation.dart                 | Dart     |          5 |          0 |          1 |          6 |
+| c:\projeler\isg\isg_ihlal\lib\data\entity\violation_types.dart           | Dart     |         38 |          0 |          5 |         43 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\auth_repo.dart                   | Dart     |          0 |          1 |          0 |          1 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\camera.dart                      | Dart     |         29 |          0 |          7 |         36 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\catalog\supabase_api.dart        | Dart     |         39 |          0 |          4 |         43 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\catalog\violation_catalog.dart   | Dart     |         23 |          0 |          6 |         29 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\catalog\violation_info_repo.dart | Dart     |         32 |          0 |          5 |         37 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\firebase_provider.dart           | Dart     |          1 |          0 |          0 |          1 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\home_repo.dart                   | Dart     |          5 |          0 |         -1 |          4 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\notification_repo.dart           | Dart     |         18 |          0 |          1 |         19 |
+| c:\projeler\isg\isg_ihlal\lib\data\session\constant_strings.dart         | Dart     |         23 |          0 |          2 |         25 |
+| c:\projeler\isg\isg_ihlal\lib\data\session\navigation_enum.dart          | Dart     |          1 |          0 |          0 |          1 |
+| c:\projeler\isg\isg_ihlal\lib\data\session\navigation_session.dart       | Dart     |          8 |          0 |          2 |         10 |
+| c:\projeler\isg\isg_ihlal\lib\data\states\camera_states.dart             | Dart     |         26 |          0 |         12 |         38 |
+| c:\projeler\isg\isg_ihlal\lib\main.dart                                  | Dart     |          7 |          0 |          1 |          8 |
+| c:\projeler\isg\isg_ihlal\lib\ui\account\account_screen.dart             | Dart     |          4 |          0 |          1 |          5 |
+| c:\projeler\isg\isg_ihlal\lib\ui\authentication\login.dart               | Dart     |         11 |          0 |          3 |         14 |
+| c:\projeler\isg\isg_ihlal\lib\ui\authentication\signup.dart              | Dart     |         16 |          0 |          2 |         18 |
+| c:\projeler\isg\isg_ihlal\lib\ui\common\top_bar.dart                     | Dart     |          1 |          0 |          0 |          1 |
+| c:\projeler\isg\isg_ihlal\lib\ui\common\violation_card.dart              | Dart     |          1 |          0 |          0 |          1 |
+| c:\projeler\isg\isg_ihlal\lib\ui\notifications\notifications_screen.dart | Dart     |         26 |          0 |          4 |         30 |
+| c:\projeler\isg\isg_ihlal\lib\ui\photo\photo_page.dart                   | Dart     |         14 |          0 |          1 |         15 |
+| c:\projeler\isg\isg_ihlal\lib\ui\photo\take_picture_screen.dart          | Dart     |        127 |          0 |         15 |        142 |
+| c:\projeler\isg\isg_ihlal\lib\ui\photo\violation_form.dart               | Dart     |         55 |          0 |          3 |         58 |
+| Total                                                                    |          |        572 |          1 |         90 |        663 |
++--------------------------------------------------------------------------+----------+------------+------------+------------+------------+

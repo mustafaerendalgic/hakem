@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:isg_ihlal/data/entity/violation.dart';
+import 'package:isg_ihlal/data/session/constant_strings.dart';
 import 'package:isg_ihlal/theme/app_colors.dart';
 import 'package:isg_ihlal/theme/text_styles.dart';
 import 'package:isg_ihlal/ui/common/parse_date.dart';
 
 class ViolationCard extends StatelessWidget {
-  Violation violation;
+  final Violation violation;
   ViolationCard(this.violation);
   @override
   Widget build(BuildContext context) {
@@ -41,11 +42,12 @@ class ViolationCard extends StatelessWidget {
                 spacing: 4,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(switch (violation.violationRisk) {
-                    ViolationRisk.lethal => "Hayati İhlal!",
-                    ViolationRisk.highRisk => "Yüksek Riskli İhlal!",
-                    ViolationRisk.mildRisk => "Riskli İhlal!",
-                    ViolationRisk.minRisk => "Minimum Riskli İhlal",
+                  Text(switch (violation.violationType.defaultRiskId) {
+                    ConstantRiskStrings.lethal => "Hayati İhlal!",
+                    ConstantRiskStrings.high_risk => "Yüksek Riskli İhlal!",
+                    ConstantRiskStrings.mild_risk => "Riskli İhlal!",
+                    ConstantRiskStrings.min_risk => "Minimum Riskli İhlal",
+                    String() => throw UnimplementedError(),
                   }, style: TextStyles.smallBodySemibold),
                   Text(
                     "Konum: " + violation.location,

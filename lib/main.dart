@@ -1,10 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:isg_ihlal/data/cubits/authentication_cubit.dart';
 import 'package:isg_ihlal/data/cubits/notification_cubit.dart';
 import 'package:isg_ihlal/data/cubits/violation_cubit.dart';
+import 'package:isg_ihlal/data/repo/catalog/violation_catalog.dart';
 import 'package:isg_ihlal/data/session/navigation_enum.dart';
 import 'package:isg_ihlal/data/session/navigation_session.dart';
 import 'package:isg_ihlal/data/states/authentication_states.dart';
@@ -23,6 +25,8 @@ import 'package:isg_ihlal/ui/photo/photo_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
+  await ViolationCatalog.loadAll();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await initializeDateFormatting('tr_TR', null);
   runApp(const MainApp());
@@ -72,7 +76,7 @@ class ISGState extends State<ISGApp> {
                       activePage = const HomePage();
                       context.read<ViolationCubit>().listenToTheList();
                     case NavigationElement.photo:
-                      activePage = PhotoPage();
+                      activePage = CameraFlowScreen();
                     case NavigationElement.analysis:
                       activePage = AnalysisScreen();
                     case NavigationElement.account:
@@ -87,6 +91,7 @@ class ISGState extends State<ISGApp> {
                   return Scaffold(
                     appBar: TopAppBar(),
                     body: activePage,
+                    backgroundColor: AppColors.beyaz,
                     bottomNavigationBar: Container(
                       color: AppColors.primary,
                       height: 80,
@@ -136,10 +141,12 @@ class ISGState extends State<ISGApp> {
                     ),
                   );
                 } else {
-                  return switch (session.authNavigationElement) {
-                    AuthNavigationElement.login => LoginPage(),
-                    AuthNavigationElement.signup => SignUpPage(),
-                  };
+                  return Scaffold(
+                    body: switch (session.authNavigationElement) {
+                      AuthNavigationElement.login => LoginPage(),
+                      AuthNavigationElement.signup => SignUpPage(),
+                    },
+                  );
                 }
               },
             );

@@ -1,3 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:isg_ihlal/data/entity/violation_types.dart';
+import 'package:isg_ihlal/data/repo/catalog/violation_catalog.dart';
+import 'package:isg_ihlal/data/session/constant_strings.dart';
 import 'package:isg_ihlal/ui/common/parse_date.dart';
 
 class Violation {
@@ -5,8 +9,8 @@ class Violation {
   final String imageUrl;
   final String description;
   final String location;
-  final ViolationRisk violationRisk;
   final DateTime date;
+  final ViolationType violationType;
   final String? actionWhen;
   final String? actionByWho;
   final ActionType actionType;
@@ -15,8 +19,8 @@ class Violation {
     this.imageUrl,
     this.description,
     this.location,
-    this.violationRisk,
     this.date,
+    this.violationType,
     this.actionByWho,
     this.actionWhen, {
     this.actionType = ActionType.posted,
@@ -24,27 +28,27 @@ class Violation {
   factory Violation.fromMap(String id, Map<String, dynamic> map) {
     return Violation(
       id,
-      map['imageUrl'],
-      map['description'],
-      map['location'],
-      ViolationRisk.fromString(map['violationRisk']),
-      parseDateTime(map['date'] ?? ''),
-      map['actionByWho'],
-      map['actionWhen'],
-      actionType: ActionType.fromString(map['actionType']),
+      map[ConstantFieldStrings.image_url],
+      map[ConstantFieldStrings.description],
+      map[ConstantFieldStrings.location],
+      parseDateTime(map[ConstantFieldStrings.date] ?? ''),
+      ViolationCatalog.byId(map[ConstantFieldStrings.violation_type_id]),
+      map[ConstantFieldStrings.action_by_who],
+      map[ConstantFieldStrings.action_when],
+      actionType: ActionType.fromString(map[ConstantFieldStrings.action_type]),
     );
   }
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
-      'imageUrl': imageUrl,
-      'description': description,
-      'location': location,
-      'violationRisk': ViolationRisk.fromViolation(violationRisk),
-      'date': date,
-      'actionByWho': actionByWho,
-      'actionWhen': actionWhen,
-      'actionType': ActionType.fromAction(actionType),
+      ConstantFieldStrings.id: id,
+      ConstantFieldStrings.image_url: imageUrl,
+      ConstantFieldStrings.description: description,
+      ConstantFieldStrings.location: location,
+      ConstantFieldStrings.date: date,
+      ConstantFieldStrings.violation_type_id: violationType.id,
+      ConstantFieldStrings.action_by_who: actionByWho,
+      ConstantFieldStrings.action_when: actionWhen,
+      ConstantFieldStrings.action_type: ActionType.fromAction(actionType),
     };
   }
 
@@ -56,6 +60,8 @@ class Violation {
       ActionType.rejected => "Reddedildi",
     };
   }
+
+  void operator []=(String other, FieldValue value) {}
 }
 
 enum ActionType {

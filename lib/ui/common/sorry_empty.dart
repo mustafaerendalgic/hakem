@@ -3,8 +3,8 @@ import 'package:isg_ihlal/theme/text_styles.dart';
 import 'package:lottie/lottie.dart';
 
 class SorryEmpty extends StatelessWidget {
-  Function callback;
-  String mesaj;
+  final VoidCallback callback;
+  final String mesaj;
   SorryEmpty(this.callback, this.mesaj, {super.key});
   @override
   Widget build(BuildContext context) {

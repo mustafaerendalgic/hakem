@@ -12,6 +12,11 @@ class NavigationSession with ChangeNotifier {
   AuthNavigationElement _authNavigationElement = AuthNavigationElement.login;
   AuthNavigationElement get authNavigationElement => _authNavigationElement;
 
+  CameraNavigationElement _cameraNavigationElement =
+      CameraNavigationElement.camera;
+  CameraNavigationElement get cameraNavigationElement =>
+      _cameraNavigationElement;
+
   void updateAuthIndex(AuthNavigationElement i) {
     _authNavigationElement = i;
     notifyListeners();
@@ -19,6 +24,11 @@ class NavigationSession with ChangeNotifier {
 
   void updateIndex(NavigationElement i) {
     _navigationIndex = i;
+    notifyListeners();
+  }
+
+  void updateCameraIndex(CameraNavigationElement i) {
+    _cameraNavigationElement = i;
     notifyListeners();
   }
 }

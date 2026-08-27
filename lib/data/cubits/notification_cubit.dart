@@ -15,4 +15,8 @@ class NotificationCubit extends Cubit<NotificationStates> {
       emit(NotificationLoadedState(list));
     }, onError: (e) => emit(NotificationErrorState(e.toString())));
   }
+
+  void updateSeenStatus() {
+    _notRepo.updateSeenStatus();
+  }
 }
