@@ -1,0 +1,84 @@
+# Details
+
+Date : 2026-08-28 15:50:06
+
+Directory c:\\projeler\\isg\\isg_ihlal
+
+Total : 69 files,  3007 codes, 71 comments, 347 blanks, all 3425 lines
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
+
+## Files
+| filename | language | code | comment | blank | total |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| [README.md](/README.md) | Markdown | 162 | 0 | 48 | 210 |
+| [analysis\_options.yaml](/analysis_options.yaml) | YAML | 1 | 0 | 1 | 2 |
+| [android/app/src/debug/AndroidManifest.xml](/android/app/src/debug/AndroidManifest.xml) | XML | 3 | 4 | 1 | 8 |
+| [android/app/src/main/AndroidManifest.xml](/android/app/src/main/AndroidManifest.xml) | XML | 35 | 11 | 1 | 47 |
+| [android/app/src/main/res/drawable-v21/launch\_background.xml](/android/app/src/main/res/drawable-v21/launch_background.xml) | XML | 4 | 7 | 2 | 13 |
+| [android/app/src/main/res/drawable/launch\_background.xml](/android/app/src/main/res/drawable/launch_background.xml) | XML | 4 | 7 | 2 | 13 |
+| [android/app/src/main/res/values-night/styles.xml](/android/app/src/main/res/values-night/styles.xml) | XML | 9 | 9 | 1 | 19 |
+| [android/app/src/main/res/values/styles.xml](/android/app/src/main/res/values/styles.xml) | XML | 9 | 9 | 1 | 19 |
+| [android/app/src/profile/AndroidManifest.xml](/android/app/src/profile/AndroidManifest.xml) | XML | 3 | 4 | 1 | 8 |
+| [android/gradle.properties](/android/gradle.properties) | Properties | 4 | 2 | 1 | 7 |
+| [android/gradle/wrapper/gradle-wrapper.properties](/android/gradle/wrapper/gradle-wrapper.properties) | Properties | 5 | 0 | 1 | 6 |
+| [assets/empty.json](/assets/empty.json) | JSON | 1 | 0 | 0 | 1 |
+| [devtools\_options.yaml](/devtools_options.yaml) | YAML | 3 | 0 | 1 | 4 |
+| [firebase.json](/firebase.json) | JSON | 1 | 0 | 0 | 1 |
+| [ios/RunnerTests/RunnerTests.swift](/ios/RunnerTests/RunnerTests.swift) | Swift | 7 | 2 | 4 | 13 |
+| [ios/Runner/AppDelegate.swift](/ios/Runner/AppDelegate.swift) | Swift | 14 | 0 | 3 | 17 |
+| [ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json](/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json) | JSON | 122 | 0 | 1 | 123 |
+| [ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json](/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json) | JSON | 23 | 0 | 1 | 24 |
+| [ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md](/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md) | Markdown | 3 | 0 | 2 | 5 |
+| [ios/Runner/Base.lproj/LaunchScreen.storyboard](/ios/Runner/Base.lproj/LaunchScreen.storyboard) | XML | 36 | 1 | 1 | 38 |
+| [ios/Runner/Base.lproj/Main.storyboard](/ios/Runner/Base.lproj/Main.storyboard) | XML | 25 | 1 | 1 | 27 |
+| [ios/Runner/Runner-Bridging-Header.h](/ios/Runner/Runner-Bridging-Header.h) | C++ | 1 | 0 | 1 | 2 |
+| [ios/Runner/SceneDelegate.swift](/ios/Runner/SceneDelegate.swift) | Swift | 4 | 0 | 3 | 7 |
+| [lib/data/cubits/authentication\_cubit.dart](/lib/data/cubits/authentication_cubit.dart) | Dart | 42 | 0 | 7 | 49 |
+| [lib/data/cubits/camera\_cubit.dart](/lib/data/cubits/camera_cubit.dart) | Dart | 50 | 0 | 13 | 63 |
+| [lib/data/cubits/form\_cubit.dart](/lib/data/cubits/form_cubit.dart) | Dart | 24 | 0 | 3 | 27 |
+| [lib/data/cubits/notification\_cubit.dart](/lib/data/cubits/notification_cubit.dart) | Dart | 18 | 0 | 5 | 23 |
+| [lib/data/cubits/violation\_cubit.dart](/lib/data/cubits/violation_cubit.dart) | Dart | 32 | 1 | 8 | 41 |
+| [lib/data/entity/violation.dart](/lib/data/entity/violation.dart) | Dart | 104 | 0 | 12 | 116 |
+| [lib/data/entity/violation\_types.dart](/lib/data/entity/violation_types.dart) | Dart | 38 | 0 | 5 | 43 |
+| [lib/data/repo/auth\_repo.dart](/lib/data/repo/auth_repo.dart) | Dart | 47 | 1 | 7 | 55 |
+| [lib/data/repo/camera.dart](/lib/data/repo/camera.dart) | Dart | 36 | 0 | 8 | 44 |
+| [lib/data/repo/catalog/facility\_locations.dart](/lib/data/repo/catalog/facility_locations.dart) | Dart | 18 | 0 | 2 | 20 |
+| [lib/data/repo/catalog/facility\_zones.dart](/lib/data/repo/catalog/facility_zones.dart) | Dart | 14 | 0 | 4 | 18 |
+| [lib/data/repo/catalog/supabase\_api.dart](/lib/data/repo/catalog/supabase_api.dart) | Dart | 39 | 0 | 5 | 44 |
+| [lib/data/repo/catalog/violation\_catalog.dart](/lib/data/repo/catalog/violation_catalog.dart) | Dart | 31 | 0 | 8 | 39 |
+| [lib/data/repo/catalog/violation\_info\_repo.dart](/lib/data/repo/catalog/violation_info_repo.dart) | Dart | 46 | 0 | 7 | 53 |
+| [lib/data/repo/firebase\_provider.dart](/lib/data/repo/firebase_provider.dart) | Dart | 15 | 0 | 3 | 18 |
+| [lib/data/repo/form\_repo.dart](/lib/data/repo/form_repo.dart) | Dart | 60 | 0 | 6 | 66 |
+| [lib/data/repo/home\_repo.dart](/lib/data/repo/home_repo.dart) | Dart | 46 | 0 | 6 | 52 |
+| [lib/data/repo/notification\_repo.dart](/lib/data/repo/notification_repo.dart) | Dart | 48 | 0 | 4 | 52 |
+| [lib/data/session/constant\_strings.dart](/lib/data/session/constant_strings.dart) | Dart | 27 | 0 | 3 | 30 |
+| [lib/data/session/navigation\_enum.dart](/lib/data/session/navigation_enum.dart) | Dart | 3 | 0 | 1 | 4 |
+| [lib/data/session/navigation\_session.dart](/lib/data/session/navigation_session.dart) | Dart | 27 | 0 | 8 | 35 |
+| [lib/data/states/authentication\_states.dart](/lib/data/states/authentication_states.dart) | Dart | 33 | 0 | 11 | 44 |
+| [lib/data/states/camera\_states.dart](/lib/data/states/camera_states.dart) | Dart | 26 | 0 | 12 | 38 |
+| [lib/data/states/form\_states.dart](/lib/data/states/form_states.dart) | Dart | 15 | 0 | 6 | 21 |
+| [lib/data/states/home\_states.dart](/lib/data/states/home_states.dart) | Dart | 12 | 0 | 8 | 20 |
+| [lib/data/states/notification\_states.dart](/lib/data/states/notification_states.dart) | Dart | 12 | 0 | 6 | 18 |
+| [lib/firebase\_options.dart](/lib/firebase_options.dart) | Dart | 53 | 12 | 4 | 69 |
+| [lib/main.dart](/lib/main.dart) | Dart | 187 | 0 | 9 | 196 |
+| [lib/theme/app\_colors.dart](/lib/theme/app_colors.dart) | Dart | 15 | 0 | 13 | 28 |
+| [lib/theme/text\_styles.dart](/lib/theme/text_styles.dart) | Dart | 45 | 0 | 10 | 55 |
+| [lib/ui/account/account\_screen.dart](/lib/ui/account/account_screen.dart) | Dart | 31 | 0 | 3 | 34 |
+| [lib/ui/analysis/analysis\_screen.dart](/lib/ui/analysis/analysis_screen.dart) | Dart | 16 | 0 | 2 | 18 |
+| [lib/ui/archives/archive\_page.dart](/lib/ui/archives/archive_page.dart) | Dart | 44 | 0 | 2 | 46 |
+| [lib/ui/authentication/login.dart](/lib/ui/authentication/login.dart) | Dart | 163 | 0 | 5 | 168 |
+| [lib/ui/authentication/signup.dart](/lib/ui/authentication/signup.dart) | Dart | 160 | 0 | 4 | 164 |
+| [lib/ui/common/parse\_date.dart](/lib/ui/common/parse_date.dart) | Dart | 19 | 0 | 4 | 23 |
+| [lib/ui/common/search\_bar.dart](/lib/ui/common/search_bar.dart) | Dart | 37 | 0 | 2 | 39 |
+| [lib/ui/common/sorry\_empty.dart](/lib/ui/common/sorry_empty.dart) | Dart | 32 | 0 | 2 | 34 |
+| [lib/ui/common/top\_bar.dart](/lib/ui/common/top_bar.dart) | Dart | 90 | 0 | 3 | 93 |
+| [lib/ui/common/violation\_card.dart](/lib/ui/common/violation_card.dart) | Dart | 101 | 0 | 2 | 103 |
+| [lib/ui/home/home\_page.dart](/lib/ui/home/home_page.dart) | Dart | 76 | 0 | 3 | 79 |
+| [lib/ui/notifications/notifications\_screen.dart](/lib/ui/notifications/notifications_screen.dart) | Dart | 40 | 0 | 6 | 46 |
+| [lib/ui/photo/photo\_page.dart](/lib/ui/photo/photo_page.dart) | Dart | 30 | 0 | 3 | 33 |
+| [lib/ui/photo/take\_picture\_screen.dart](/lib/ui/photo/take_picture_screen.dart) | Dart | 160 | 0 | 15 | 175 |
+| [lib/ui/photo/violation\_form.dart](/lib/ui/photo/violation_form.dart) | Dart | 335 | 0 | 4 | 339 |
+| [pubspec.yaml](/pubspec.yaml) | YAML | 31 | 0 | 5 | 36 |
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)

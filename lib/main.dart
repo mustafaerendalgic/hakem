@@ -18,6 +18,7 @@ import 'package:isg_ihlal/ui/analysis/analysis_screen.dart';
 import 'package:isg_ihlal/ui/archives/archive_page.dart';
 import 'package:isg_ihlal/ui/authentication/login.dart';
 import 'package:isg_ihlal/ui/authentication/signup.dart';
+import 'package:isg_ihlal/ui/common/detail_screen.dart';
 import 'package:isg_ihlal/ui/common/top_bar.dart';
 import 'package:isg_ihlal/ui/home/home_page.dart';
 import 'package:isg_ihlal/ui/notifications/notifications_screen.dart';
@@ -72,20 +73,24 @@ class ISGState extends State<ISGApp> {
                 if (state is AuthenticatedState) {
                   Widget activePage;
                   switch (session.navigationIndex) {
-                    case NavigationElement.home:
+                    case TabScreenSession(element: NavigationElement.home):
                       activePage = const HomePage();
                       context.read<ViolationCubit>().listenToTheList();
-                    case NavigationElement.photo:
+                    case TabScreenSession(element: NavigationElement.photo):
                       activePage = CameraFlowScreen();
-                    case NavigationElement.analysis:
+                    case TabScreenSession(element: NavigationElement.analysis):
                       activePage = AnalysisScreen();
-                    case NavigationElement.account:
+                    case TabScreenSession(element: NavigationElement.account):
                       activePage = AccountScreen();
-                    case NavigationElement.archives:
+                    case TabScreenSession(element: NavigationElement.archives):
                       context.read<ViolationCubit>().listenToTheArchives();
                       activePage = ArchivePage();
-                    case NavigationElement.notifications:
+                    case TabScreenSession(
+                      element: NavigationElement.notifications,
+                    ):
                       activePage = NotificationsScreen();
+                    case DetailScreenSession(:final violation):
+                      activePage = DetailScreen(violation: violation);
                   }
 
                   return Scaffold(

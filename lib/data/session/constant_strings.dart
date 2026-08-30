@@ -6,6 +6,14 @@ class ConstantRiskStrings {
   static const String min_risk = "min_risk";
 }
 
+class ConstantButtonStrings {
+  ConstantButtonStrings._();
+  static const String reopen = "YENİDEN AÇ";
+  static const String resolve = "ÇÖZÜMLE";
+  static const String examine = "İNCELEMEYE AL";
+  static const String cancel = "İPTAL ET";
+}
+
 class ConstantFieldStrings {
   ConstantFieldStrings._();
   static final String id = "id";
@@ -17,6 +25,8 @@ class ConstantFieldStrings {
   static final String description = "description";
   static final String location = "location";
   static final String date = "date";
+  static final String uid = "uid";
+  static final String name = "name";
   static final String violation_type_id = "violation_type_id";
   static final String action_by_who = "action_by_who";
   static final String action_when = "action_when";

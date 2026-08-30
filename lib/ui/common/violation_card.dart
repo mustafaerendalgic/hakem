@@ -1,94 +1,114 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:isg_ihlal/data/entity/violation.dart';
-import 'package:isg_ihlal/data/session/constant_strings.dart';
 import 'package:isg_ihlal/theme/app_colors.dart';
 import 'package:isg_ihlal/theme/text_styles.dart';
+import 'package:isg_ihlal/ui/common/action_type_tag.dart';
 import 'package:isg_ihlal/ui/common/parse_date.dart';
+import 'package:isg_ihlal/util/action_type.dart';
+import 'package:isg_ihlal/util/risk_string.dart';
 
 class ViolationCard extends StatelessWidget {
   final Violation violation;
-  ViolationCard(this.violation);
+  const ViolationCard(this.violation, {super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        boxShadow: [BoxShadow(color: AppColors.kirli, offset: Offset(0, 2))],
+        boxShadow: const [
+          BoxShadow(color: AppColors.kirli, offset: Offset(0, 2)),
+        ],
         color: AppColors.beyaz,
-        border: Border(
+        border: const Border(
           top: BorderSide(color: AppColors.cokTehlikeli, width: 3),
         ),
       ),
       child: Column(
-        spacing: 16,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            spacing: 8,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
                 width: 48,
                 height: 48,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.cokTehlikeli,
                 ),
-                child: Center(
+                child: const Center(
                   child: Icon(Icons.warning, size: 28, color: AppColors.beyaz),
                 ),
               ),
-              Column(
-                spacing: 4,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(switch (violation.violationType.defaultRiskId) {
-                    ConstantRiskStrings.lethal => "Hayati İhlal!",
-                    ConstantRiskStrings.high_risk => "Yüksek Riskli İhlal!",
-                    ConstantRiskStrings.mild_risk => "Riskli İhlal!",
-                    ConstantRiskStrings.min_risk => "Minimum Riskli İhlal",
-                    String() => throw UnimplementedError(),
-                  }, style: TextStyles.smallBodySemibold),
-                  Text(
-                    "Konum: " + violation.location,
-                    style: TextStyles.smallBodySemibold,
-                  ),
-                ],
-              ),
-              Spacer(),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  color: AppColors.primary,
-                ),
-                child: Center(
-                  child: Text(
-                    switch (violation.actionType) {
-                      ActionType.investigating => "İnceleniyor",
-                      ActionType.resolved => "Çözümlendi",
-                      ActionType.posted => "Yeni",
-                      ActionType.rejected => "Reddedildi",
-                    },
-                    style: TextStyles.caption.copyWith(color: AppColors.beyaz),
-                  ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      getRiskString(violation),
+                      style: TextStyles.smallBodySemibold,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      "Konum: ${violation.location}",
+                      style: TextStyles.smallBodySemibold,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
                 ),
               ),
+              const SizedBox(width: 8),
+              ActionTypeTag(violation),
             ],
           ),
-          Text(violation.description, style: TextStyles.caption),
-          Container(
-            height: 250,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
-            child: Image.asset("assets/mockimage.png"),
+          const SizedBox(height: 16),
+          SizedBox(
+            width: double.infinity,
+            child: Text(
+              violation.description,
+              textAlign: TextAlign.start,
+              style: TextStyles.caption,
+            ),
           ),
+          const SizedBox(height: 16),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: SizedBox(
+              height: 250,
+              width: double.infinity,
+              child: CachedNetworkImage(
+                fit: BoxFit.cover,
+                imageUrl: violation.imageUrl,
+                placeholder: (context, url) => const Center(
+                  child: SizedBox(
+                    width: 32,
+                    height: 32,
+                    child: CircularProgressIndicator(strokeWidth: 3),
+                  ),
+                ),
+                errorWidget: (context, url, error) {
+                  return const Center(child: Icon(Icons.broken_image, size: 48));
+                },
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
           Row(
-            spacing: 4,
             children: [
               Text(
                 getTheMonth(violation.date),
                 style: TextStyles.smallBodySemibold,
               ),
+              const SizedBox(width: 4),
               Text(
                 getTheTime(violation.date),
                 style: TextStyles.smallBodySemibold,

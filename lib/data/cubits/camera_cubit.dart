@@ -1,4 +1,3 @@
-import 'package:camera/camera.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:isg_ihlal/data/repo/camera.dart';
 import 'package:isg_ihlal/data/session/navigation_session.dart';

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:isg_ihlal/data/entity/violation.dart';
-import 'package:isg_ihlal/data/entity/violation_types.dart';
 import 'package:isg_ihlal/data/repo/catalog/violation_catalog.dart';
 import 'package:isg_ihlal/data/repo/firebase_provider.dart';
 
@@ -18,10 +17,11 @@ class HomeRepo {
     if (uid == null) return;
     final Violation violation = Violation(
       '0',
-      "https://firebasestorage.googleapis.com/v0/b/isgprojesi-dd27c.firebasestorage.app/o/image%202%20(1).png?alt=media&token=8dfe7eba-e3cf-4e56-aae8-0d350c4da2e0",
+      "https://firebasestorage.googleapis.com/v0/b/isgprojesi-dd27c.firebasestorage.app/o/mockimage.png?alt=media&token=1cdc3b45-4f4d-44ed-a4ce-eb055c47f6e6",
       "Personelin riskli bir bölgede baret takmadığı tespit edilmiştir.",
       "Silo Sahası, Cihaz 3",
       DateTime.now(),
+      FirebaseProvider.instance.uid!,
       ViolationCatalog.violationType[0],
       null,
       null,

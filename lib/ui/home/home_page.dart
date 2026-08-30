@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:isg_ihlal/data/cubits/violation_cubit.dart';
 import 'package:isg_ihlal/data/entity/violation.dart';
+import 'package:isg_ihlal/data/session/navigation_enum.dart';
+import 'package:isg_ihlal/data/session/navigation_session.dart';
 import 'package:isg_ihlal/data/states/home_states.dart';
 import 'package:isg_ihlal/ui/common/search_bar.dart';
 import 'package:isg_ihlal/ui/common/sorry_empty.dart';
@@ -61,7 +63,7 @@ class HomePage extends StatelessWidget {
                       final item = violations[index];
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 16.0),
-                        child: ViolationCard(item),
+                        child: InkWell(onTap: () => NavigationSession.instance.navigateToDetail(item), child: ViolationCard(item)),
                       );
                     },childCount: violations.length),
                     itemExtent: 451,

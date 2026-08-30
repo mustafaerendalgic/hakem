@@ -1,0 +1,106 @@
+Date : 2026-08-28 15:50:06
+Directory : c:\projeler\isg\isg_ihlal
+Total : 40 files,  988 codes, 57 comments, 112 blanks, all 1157 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| Dart       |         16 |        478 |          0 |         29 |        507 |
+| Markdown   |          2 |        165 |          0 |         50 |        215 |
+| JSON       |          4 |        147 |          0 |          2 |        149 |
+| XML        |          9 |        128 |         53 |         11 |        192 |
+| YAML       |          3 |         35 |          0 |          7 |         42 |
+| Swift      |          3 |         25 |          2 |         10 |         37 |
+| Properties |          2 |          9 |          2 |          2 |         13 |
+| C++        |          1 |          1 |          0 |          1 |          2 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                    | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                       |         40 |        988 |         57 |        112 |      1,157 |
+| . (Files)                                                                               |          5 |        198 |          0 |         55 |        253 |
+| android                                                                                 |          9 |         76 |         53 |         11 |        140 |
+| android (Files)                                                                         |          1 |          4 |          2 |          1 |          7 |
+| android\app                                                                             |          7 |         67 |         51 |          9 |        127 |
+| android\app\src                                                                         |          7 |         67 |         51 |          9 |        127 |
+| android\app\src\debug                                                                   |          1 |          3 |          4 |          1 |          8 |
+| android\app\src\main                                                                    |          5 |         61 |         43 |          7 |        111 |
+| android\app\src\main (Files)                                                            |          1 |         35 |         11 |          1 |         47 |
+| android\app\src\main\res                                                                |          4 |         26 |         32 |          6 |         64 |
+| android\app\src\main\res\drawable                                                       |          1 |          4 |          7 |          2 |         13 |
+| android\app\src\main\res\drawable-v21                                                   |          1 |          4 |          7 |          2 |         13 |
+| android\app\src\main\res\values                                                         |          1 |          9 |          9 |          1 |         19 |
+| android\app\src\main\res\values-night                                                   |          1 |          9 |          9 |          1 |         19 |
+| android\app\src\profile                                                                 |          1 |          3 |          4 |          1 |          8 |
+| android\gradle                                                                          |          1 |          5 |          0 |          1 |          6 |
+| android\gradle\wrapper                                                                  |          1 |          5 |          0 |          1 |          6 |
+| assets                                                                                  |          1 |          1 |          0 |          0 |          1 |
+| ios                                                                                     |          9 |        235 |          4 |         17 |        256 |
+| ios\Runner                                                                              |          8 |        228 |          2 |         13 |        243 |
+| ios\Runner (Files)                                                                      |          3 |         19 |          0 |          7 |         26 |
+| ios\RunnerTests                                                                         |          1 |          7 |          2 |          4 |         13 |
+| ios\Runner\Assets.xcassets                                                              |          3 |        148 |          0 |          4 |        152 |
+| ios\Runner\Assets.xcassets\AppIcon.appiconset                                           |          1 |        122 |          0 |          1 |        123 |
+| ios\Runner\Assets.xcassets\LaunchImage.imageset                                         |          2 |         26 |          0 |          3 |         29 |
+| ios\Runner\Base.lproj                                                                   |          2 |         61 |          2 |          2 |         65 |
+| lib                                                                                     |         16 |        478 |          0 |         29 |        507 |
+| lib\data                                                                                |         13 |        161 |          0 |         28 |        189 |
+| lib\data\cubits                                                                         |          2 |         20 |          0 |          3 |         23 |
+| lib\data\repo                                                                           |          9 |        122 |          0 |         18 |        140 |
+| lib\data\repo (Files)                                                                   |          4 |         68 |          0 |          7 |         75 |
+| lib\data\repo\catalog                                                                   |          5 |         54 |          0 |         11 |         65 |
+| lib\data\session                                                                        |          1 |          4 |          0 |          1 |          5 |
+| lib\data\states                                                                         |          1 |         15 |          0 |          6 |         21 |
+| lib\ui                                                                                  |          3 |        317 |          0 |          1 |        318 |
+| lib\ui\photo                                                                            |          3 |        317 |          0 |          1 |        318 |
++-----------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\projeler\isg\isg_ihlal\README.md                                                     | Markdown   |        162 |          0 |         48 |        210 |
+| c:\projeler\isg\isg_ihlal\analysis_options.yaml                                         | YAML       |          1 |          0 |          1 |          2 |
+| c:\projeler\isg\isg_ihlal\android\app\src\debug\AndroidManifest.xml                     | XML        |          3 |          4 |          1 |          8 |
+| c:\projeler\isg\isg_ihlal\android\app\src\main\AndroidManifest.xml                      | XML        |         35 |         11 |          1 |         47 |
+| c:\projeler\isg\isg_ihlal\android\app\src\main\res\drawable-v21\launch_background.xml   | XML        |          4 |          7 |          2 |         13 |
+| c:\projeler\isg\isg_ihlal\android\app\src\main\res\drawable\launch_background.xml       | XML        |          4 |          7 |          2 |         13 |
+| c:\projeler\isg\isg_ihlal\android\app\src\main\res\values-night\styles.xml              | XML        |          9 |          9 |          1 |         19 |
+| c:\projeler\isg\isg_ihlal\android\app\src\main\res\values\styles.xml                    | XML        |          9 |          9 |          1 |         19 |
+| c:\projeler\isg\isg_ihlal\android\app\src\profile\AndroidManifest.xml                   | XML        |          3 |          4 |          1 |          8 |
+| c:\projeler\isg\isg_ihlal\android\gradle.properties                                     | Properties |          4 |          2 |          1 |          7 |
+| c:\projeler\isg\isg_ihlal\android\gradle\wrapper\gradle-wrapper.properties              | Properties |          5 |          0 |          1 |          6 |
+| c:\projeler\isg\isg_ihlal\assets\empty.json                                             | JSON       |          1 |          0 |          0 |          1 |
+| c:\projeler\isg\isg_ihlal\devtools_options.yaml                                         | YAML       |          3 |          0 |          1 |          4 |
+| c:\projeler\isg\isg_ihlal\firebase.json                                                 | JSON       |          1 |          0 |          0 |          1 |
+| c:\projeler\isg\isg_ihlal\ios\RunnerTests\RunnerTests.swift                             | Swift      |          7 |          2 |          4 |         13 |
+| c:\projeler\isg\isg_ihlal\ios\Runner\AppDelegate.swift                                  | Swift      |         14 |          0 |          3 |         17 |
+| c:\projeler\isg\isg_ihlal\ios\Runner\Assets.xcassets\AppIcon.appiconset\Contents.json   | JSON       |        122 |          0 |          1 |        123 |
+| c:\projeler\isg\isg_ihlal\ios\Runner\Assets.xcassets\LaunchImage.imageset\Contents.json | JSON       |         23 |          0 |          1 |         24 |
+| c:\projeler\isg\isg_ihlal\ios\Runner\Assets.xcassets\LaunchImage.imageset\README.md     | Markdown   |          3 |          0 |          2 |          5 |
+| c:\projeler\isg\isg_ihlal\ios\Runner\Base.lproj\LaunchScreen.storyboard                 | XML        |         36 |          1 |          1 |         38 |
+| c:\projeler\isg\isg_ihlal\ios\Runner\Base.lproj\Main.storyboard                         | XML        |         25 |          1 |          1 |         27 |
+| c:\projeler\isg\isg_ihlal\ios\Runner\Runner-Bridging-Header.h                           | C++        |          1 |          0 |          1 |          2 |
+| c:\projeler\isg\isg_ihlal\ios\Runner\SceneDelegate.swift                                | Swift      |          4 |          0 |          3 |          7 |
+| c:\projeler\isg\isg_ihlal\lib\data\cubits\camera_cubit.dart                             | Dart       |         -4 |          0 |          0 |         -4 |
+| c:\projeler\isg\isg_ihlal\lib\data\cubits\form_cubit.dart                               | Dart       |         24 |          0 |          3 |         27 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\camera.dart                                     | Dart       |          7 |          0 |          1 |          8 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\catalog\facility_locations.dart                 | Dart       |         18 |          0 |          2 |         20 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\catalog\facility_zones.dart                     | Dart       |         14 |          0 |          4 |         18 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\catalog\supabase_api.dart                       | Dart       |          0 |          0 |          1 |          1 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\catalog\violation_catalog.dart                  | Dart       |          8 |          0 |          2 |         10 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\catalog\violation_info_repo.dart                | Dart       |         14 |          0 |          2 |         16 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\firebase_provider.dart                          | Dart       |          2 |          0 |          0 |          2 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\form_repo.dart                                  | Dart       |         60 |          0 |          6 |         66 |
+| c:\projeler\isg\isg_ihlal\lib\data\repo\home_repo.dart                                  | Dart       |         -1 |          0 |          0 |         -1 |
+| c:\projeler\isg\isg_ihlal\lib\data\session\constant_strings.dart                        | Dart       |          4 |          0 |          1 |          5 |
+| c:\projeler\isg\isg_ihlal\lib\data\states\form_states.dart                              | Dart       |         15 |          0 |          6 |         21 |
+| c:\projeler\isg\isg_ihlal\lib\ui\photo\photo_page.dart                                  | Dart       |          4 |          0 |          0 |          4 |
+| c:\projeler\isg\isg_ihlal\lib\ui\photo\take_picture_screen.dart                         | Dart       |         33 |          0 |          0 |         33 |
+| c:\projeler\isg\isg_ihlal\lib\ui\photo\violation_form.dart                              | Dart       |        280 |          0 |          1 |        281 |
+| c:\projeler\isg\isg_ihlal\pubspec.yaml                                                  | YAML       |         31 |          0 |          5 |         36 |
+| Total                                                                                   |            |        988 |         57 |        112 |      1,157 |
++-----------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

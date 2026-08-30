@@ -23,11 +23,8 @@ class _CameraView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: BlocBuilder<CameraCubit, CameraState>(
-        builder: (context, state) {
-          return switch (state) {
+    final state = context.watch<CameraCubit>().state;
+    Widget body = switch (state) {
             CameraInitial() => const SizedBox(),
 
             CameraLoading() => const Center(child: CircularProgressIndicator()),
@@ -45,11 +42,11 @@ class _CameraView extends StatelessWidget {
             CameraCaptured(:final image) => _buildResult(context, image),
 
             CameraError(:final message) => Center(
-              child: Text('Hata: $message'),
-            ),
-          };
-        },
-      ),
+              child: Text('Hata: $message'))
+            };
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: body,      
     );
   }
 
@@ -87,12 +84,7 @@ class _CameraView extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.beyaz,
-                  border: Border(
-                    left: BorderSide(color: AppColors.primary, width: 4),
-                    right: BorderSide(color: AppColors.primary, width: 4),
-                    top: BorderSide(color: AppColors.primary, width: 4),
-                    bottom: BorderSide(color: AppColors.primary, width: 4),
-                  ),
+                  border: BoxBorder.all(color: AppColors.primary, width: 3)
                 ),
               ),
             ),

@@ -10,8 +10,9 @@ class Violation {
   final String description;
   final String location;
   final DateTime date;
+  final String uid;
   final ViolationType violationType;
-  final String? actionWhen;
+  final DateTime? actionWhen;
   final String? actionByWho;
   final ActionType actionType;
   Violation(
@@ -20,6 +21,7 @@ class Violation {
     this.description,
     this.location,
     this.date,
+    this.uid,
     this.violationType,
     this.actionByWho,
     this.actionWhen, {
@@ -32,6 +34,7 @@ class Violation {
       map[ConstantFieldStrings.description],
       map[ConstantFieldStrings.location],
       parseDateTime(map[ConstantFieldStrings.date] ?? ''),
+      map[ConstantFieldStrings.uid],
       ViolationCatalog.byId(map[ConstantFieldStrings.violation_type_id]),
       map[ConstantFieldStrings.action_by_who],
       map[ConstantFieldStrings.action_when],
@@ -45,12 +48,38 @@ class Violation {
       ConstantFieldStrings.description: description,
       ConstantFieldStrings.location: location,
       ConstantFieldStrings.date: date,
+      ConstantFieldStrings.uid: uid,
       ConstantFieldStrings.violation_type_id: violationType.id,
       ConstantFieldStrings.action_by_who: actionByWho,
       ConstantFieldStrings.action_when: actionWhen,
       ConstantFieldStrings.action_type: ActionType.fromAction(actionType),
     };
   }
+  Violation copyWith({
+  String? id,
+  String? imageUrl,
+  String? description,
+  String? location,
+  DateTime? date,
+  String? uid,
+  ViolationType? violationType,
+  String? actionByWho,
+  DateTime? actionWhen,
+  ActionType? actionType,
+}) {
+  return Violation(
+    id ?? this.id,
+    imageUrl ?? this.imageUrl,
+    description ?? this.description,
+    location ?? this.location,
+    date ?? this.date,
+    uid ?? this.uid,
+    violationType ?? this.violationType,
+    actionByWho ?? this.actionByWho,
+    actionWhen ?? this.actionWhen,
+    actionType: actionType ?? this.actionType,
+  );
+}
 
   static String getTheTag(ActionType action) {
     return switch (action) {
