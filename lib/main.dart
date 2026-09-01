@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:isg_ihlal/data/cubits/analysis_cubit.dart';
+import 'package:isg_ihlal/data/cubits/archive_cubit.dart';
 import 'package:isg_ihlal/data/cubits/authentication_cubit.dart';
+import 'package:isg_ihlal/data/cubits/details_cubit.dart';
 import 'package:isg_ihlal/data/cubits/notification_cubit.dart';
 import 'package:isg_ihlal/data/cubits/violation_cubit.dart';
 import 'package:isg_ihlal/data/repo/catalog/violation_catalog.dart';
+import 'package:isg_ihlal/data/repo/detail_repo.dart';
 import 'package:isg_ihlal/data/session/navigation_enum.dart';
 import 'package:isg_ihlal/data/session/navigation_session.dart';
 import 'package:isg_ihlal/data/states/authentication_states.dart';
@@ -18,7 +22,7 @@ import 'package:isg_ihlal/ui/analysis/analysis_screen.dart';
 import 'package:isg_ihlal/ui/archives/archive_page.dart';
 import 'package:isg_ihlal/ui/authentication/login.dart';
 import 'package:isg_ihlal/ui/authentication/signup.dart';
-import 'package:isg_ihlal/ui/common/detail_screen.dart';
+import 'package:isg_ihlal/ui/detail/detail_screen.dart';
 import 'package:isg_ihlal/ui/common/top_bar.dart';
 import 'package:isg_ihlal/ui/home/home_page.dart';
 import 'package:isg_ihlal/ui/notifications/notifications_screen.dart';
@@ -60,7 +64,10 @@ class ISGState extends State<ISGApp> {
           create: (context) => AuthenticationCubit(),
         ),
         BlocProvider(create: (context) => ViolationCubit()),
+        BlocProvider(create: (context) => ArchiveCubit()),
         BlocProvider(create: (context) => NotificationCubit()),
+        BlocProvider(create: (context) => AnalysisCubit()),
+        BlocProvider(create: (_) => DetailsCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -75,7 +82,6 @@ class ISGState extends State<ISGApp> {
                   switch (session.navigationIndex) {
                     case TabScreenSession(element: NavigationElement.home):
                       activePage = const HomePage();
-                      context.read<ViolationCubit>().listenToTheList();
                     case TabScreenSession(element: NavigationElement.photo):
                       activePage = CameraFlowScreen();
                     case TabScreenSession(element: NavigationElement.analysis):
@@ -83,12 +89,11 @@ class ISGState extends State<ISGApp> {
                     case TabScreenSession(element: NavigationElement.account):
                       activePage = AccountScreen();
                     case TabScreenSession(element: NavigationElement.archives):
-                      context.read<ViolationCubit>().listenToTheArchives();
-                      activePage = ArchivePage();
+                      activePage = const ArchivePage();
                     case TabScreenSession(
                       element: NavigationElement.notifications,
                     ):
-                      activePage = NotificationsScreen();
+                      activePage = const NotificationsScreen();
                     case DetailScreenSession(:final violation):
                       activePage = DetailScreen(violation: violation);
                   }
@@ -107,7 +112,7 @@ class ISGState extends State<ISGApp> {
                             "Home",
                             Icons.home,
                             NavigationElement.home,
-                            session.navigationIndex == NavigationElement.home,
+                            session.isTab(NavigationElement.home),
                             (index) {
                               session.updateIndex(index);
                             },
@@ -116,7 +121,7 @@ class ISGState extends State<ISGApp> {
                             "Fotoğraf",
                             Icons.camera_enhance_rounded,
                             NavigationElement.photo,
-                            session.navigationIndex == NavigationElement.photo,
+                            session.isTab(NavigationElement.photo),
                             (index) {
                               session.updateIndex(index);
                             },
@@ -125,8 +130,7 @@ class ISGState extends State<ISGApp> {
                             "Analiz",
                             Icons.analytics_rounded,
                             NavigationElement.analysis,
-                            session.navigationIndex ==
-                                NavigationElement.analysis,
+                            session.isTab(NavigationElement.analysis),
                             (index) {
                               session.updateIndex(index);
                             },
@@ -135,8 +139,7 @@ class ISGState extends State<ISGApp> {
                             "Hesap",
                             Icons.person_2_rounded,
                             NavigationElement.account,
-                            session.navigationIndex ==
-                                NavigationElement.account,
+                            session.isTab(NavigationElement.account),
                             (index) {
                               session.updateIndex(index);
                             },

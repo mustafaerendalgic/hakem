@@ -40,4 +40,27 @@ class SupabaseApi with ChangeNotifier {
     final jsonList = jsonDecode(body) as List<dynamic>;
     return jsonList.cast<Map<String, dynamic>>();
   }
+
+  static Future<Map<String, dynamic>> callRpc(
+    String functionName, {
+    Map<String, dynamic>? params,
+  }) async {
+    if (_body == null || _key == null) {
+      throw Exception('SUPABASE_URL veya SUPABASE_ANON_KEY .env dosyasında bulunamadı');
+    }
+    final String baseUrl = _body!;
+    final response = await http.post(
+      Uri.parse('$baseUrl/rest/v1/rpc/$functionName'),
+      headers: {
+        'apiKey': _key!,
+        'Authorization': 'Bearer $_key',
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(params ?? {}),
+    );
+    if (response.statusCode != 200) {
+      throw Exception('RPC $functionName failed: ${response.statusCode} ${response.body}');
+    }
+    return jsonDecode(response.body) as Map<String, dynamic>;
+  }
 }

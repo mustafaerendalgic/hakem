@@ -3,10 +3,14 @@ import 'package:isg_ihlal/data/entity/violation.dart';
 sealed class DetailStates {}
 
 class DetailInitial extends DetailStates {}
-
-class DetailActionPerforming extends DetailStates {}
-
-class DetailActionPerformed extends DetailStates {}
+class DetailLoaded extends DetailStates {
+  final Violation violation;
+  DetailLoaded(this.violation);
+}
+class DetailViolationCanceling extends DetailStates {}
+class DetailViolationInvestigating extends DetailStates {}
+class DetailViolationResolving extends DetailStates {}
+class DetailViolationReopening extends DetailStates {}
 
 class DetailError extends DetailStates {}
 

@@ -23,6 +23,7 @@ dependencies:
   path: ^1.9.1
   firebase_storage: ^13.5.0
   cached_network_image: ^3.4.1
+  supabase_flutter: ^2.17.2
 
 dev_dependencies:
   flutter_test:

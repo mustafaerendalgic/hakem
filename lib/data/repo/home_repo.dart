@@ -44,9 +44,4 @@ class HomeRepo {
       },
     );
   }
-
-  Stream<List<Violation>> get archives async* {
-    await Future.delayed(Duration(seconds: 1));
-    yield <Violation>[];
-  }
 }

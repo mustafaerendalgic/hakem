@@ -6,11 +6,8 @@ import 'package:isg_ihlal/data/repo/home_repo.dart';
 import 'package:isg_ihlal/data/states/home_states.dart';
 
 class ViolationCubit extends Cubit<ViolationStates> {
-  // kısıtlama
-  HomeRepo _repo = HomeRepo.instance;
-
+  final HomeRepo _repo = HomeRepo.instance;
   StreamSubscription<List<Violation>>? _violationSubscription;
-  StreamSubscription<List<Violation>>? _archivesSubscription;
 
   ViolationCubit() : super(InitialViolationState()) {
     listenToTheList();
@@ -29,12 +26,9 @@ class ViolationCubit extends Cubit<ViolationStates> {
     );
   }
 
-  void listenToTheArchives() {
-    emit(ViolationLoadingState());
-    _archivesSubscription?.cancel();
-    _archivesSubscription = _repo.archives.listen(
-      (list) => emit(ViolationLoadedState(list)),
-      onError: (e) => emit(ViolationErrorState(e.toString())),
-    );
+  @override
+  Future<void> close() {
+    _violationSubscription?.cancel();
+    return super.close();
   }
 }

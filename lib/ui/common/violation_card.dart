@@ -6,7 +6,8 @@ import 'package:isg_ihlal/theme/app_colors.dart';
 import 'package:isg_ihlal/theme/text_styles.dart';
 import 'package:isg_ihlal/ui/common/action_type_tag.dart';
 import 'package:isg_ihlal/ui/common/parse_date.dart';
-import 'package:isg_ihlal/util/action_type.dart';
+import 'package:isg_ihlal/util/get_badge_color.dart';
+import 'package:isg_ihlal/util/get_risk_color.dart';
 import 'package:isg_ihlal/util/risk_string.dart';
 
 class ViolationCard extends StatelessWidget {
@@ -15,6 +16,8 @@ class ViolationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color borderColor = getRiskColor(violation.violationType);
+    final Color tagColor = getBadgeColor(violation.actionType);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
@@ -24,9 +27,7 @@ class ViolationCard extends StatelessWidget {
           BoxShadow(color: AppColors.kirli, offset: Offset(0, 2)),
         ],
         color: AppColors.beyaz,
-        border: const Border(
-          top: BorderSide(color: AppColors.cokTehlikeli, width: 3),
-        ),
+        border: Border(top: BorderSide(color: borderColor, width: 3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,9 +38,9 @@ class ViolationCard extends StatelessWidget {
               Container(
                 width: 48,
                 height: 48,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: AppColors.cokTehlikeli,
+                  color: borderColor,
                 ),
                 child: const Center(
                   child: Icon(Icons.warning, size: 28, color: AppColors.beyaz),
@@ -96,7 +97,9 @@ class ViolationCard extends StatelessWidget {
                   ),
                 ),
                 errorWidget: (context, url, error) {
-                  return const Center(child: Icon(Icons.broken_image, size: 48));
+                  return const Center(
+                    child: Icon(Icons.broken_image, size: 48),
+                  );
                 },
               ),
             ),

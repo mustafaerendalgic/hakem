@@ -46,7 +46,6 @@ class AuthManagerImp implements AuthRepository {
         await userDocRef.set({
           'createdAt': FieldValue.serverTimestamp(),
           'email': user.email,
-          'lastReadNotification': FieldValue.serverTimestamp(),
           'uid': user.uid,
         });
       }

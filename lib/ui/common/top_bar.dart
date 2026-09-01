@@ -56,18 +56,18 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
                 },
                 icon: BlocBuilder<NotificationCubit, NotificationStates>(
                   builder: (context, state) {
-                    int _unseenViolations = 0;
-                    if (state is NotificationLoadedState) {
-                      _unseenViolations = state.notifications.length;
-                    }
+                    final int unseenViolations = state is NotificationLoadedState
+                        ? state.unseenCount
+                        : 0;
+
                     return Badge(
                       backgroundColor: AppColors.beyaz,
                       textColor: AppColors.primary,
                       label: Text(
-                        _unseenViolations.toString(),
+                        unseenViolations.toString(),
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      isLabelVisible: _unseenViolations > 0,
+                      isLabelVisible: unseenViolations > 0,
                       alignment: AlignmentDirectional.topEnd,
                       offset: Offset(0, -4),
                       child: Icon(

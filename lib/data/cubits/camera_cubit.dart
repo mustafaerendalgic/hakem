@@ -27,7 +27,6 @@ class CameraCubit extends Cubit<CameraState> {
   }
 
   Future<void> takePicture() async {
-
     final currentState = state;
     if (currentState is! CameraReady) return;
 
@@ -36,7 +35,6 @@ class CameraCubit extends Cubit<CameraState> {
     try {
       final file = await _cameraRepository.takePicture();
       emit(CameraCaptured(file));
-      
     } catch (e) {
       emit(CameraError(e.toString()));
     }

@@ -22,6 +22,10 @@ class NavigationSession with ChangeNotifier {
   NavigationScreen _navigationIndex = TabScreenSession(NavigationElement.home);
   NavigationScreen get navigationIndex => _navigationIndex;
 
+  bool isTab(NavigationElement element) =>
+      _navigationIndex is TabScreenSession &&
+      (_navigationIndex as TabScreenSession).element == element;
+
   AuthNavigationElement _authNavigationElement = AuthNavigationElement.login;
   AuthNavigationElement get authNavigationElement => _authNavigationElement;
 

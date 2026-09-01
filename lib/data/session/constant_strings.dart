@@ -35,4 +35,5 @@ class ConstantFieldStrings {
   static final String zone_id = "zone_id";
   static final String code = "code";
   static final String is_active = "is_active";
+  static final String seen_by = "seen_by";
 }

@@ -15,6 +15,7 @@ class Violation {
   final DateTime? actionWhen;
   final String? actionByWho;
   final ActionType actionType;
+  final List<String> seenBy;
   Violation(
     this.id,
     this.imageUrl,
@@ -26,6 +27,7 @@ class Violation {
     this.actionByWho,
     this.actionWhen, {
     this.actionType = ActionType.posted,
+    this.seenBy = const [],
   });
   factory Violation.fromMap(String id, Map<String, dynamic> map) {
     return Violation(
@@ -37,8 +39,9 @@ class Violation {
       map[ConstantFieldStrings.uid],
       ViolationCatalog.byId(map[ConstantFieldStrings.violation_type_id]),
       map[ConstantFieldStrings.action_by_who],
-      map[ConstantFieldStrings.action_when],
+      parseDateTime([ConstantFieldStrings.action_when]),
       actionType: ActionType.fromString(map[ConstantFieldStrings.action_type]),
+      seenBy: List<String>.from(map[ConstantFieldStrings.seen_by] ?? []),
     );
   }
   Map<String, dynamic> toMap() {
@@ -53,6 +56,7 @@ class Violation {
       ConstantFieldStrings.action_by_who: actionByWho,
       ConstantFieldStrings.action_when: actionWhen,
       ConstantFieldStrings.action_type: ActionType.fromAction(actionType),
+      ConstantFieldStrings.seen_by: seenBy,
     };
   }
   Violation copyWith({
@@ -66,6 +70,7 @@ class Violation {
   String? actionByWho,
   DateTime? actionWhen,
   ActionType? actionType,
+  List<String>? seenBy,
 }) {
   return Violation(
     id ?? this.id,
@@ -78,6 +83,7 @@ class Violation {
     actionByWho ?? this.actionByWho,
     actionWhen ?? this.actionWhen,
     actionType: actionType ?? this.actionType,
+    seenBy: seenBy ?? this.seenBy,
   );
 }
 
