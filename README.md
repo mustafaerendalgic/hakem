@@ -29,7 +29,6 @@ Proje, **Çimko bünyesindeki Flutter geliştirici stajı** kapsamında gelişti
   <img src="https://github.com/user-attachments/assets/a61cea71-aa8e-4007-9231-ec216c257055" width="220" alt="Hakem mobil uygulama ekranı 1" />
   <img src="https://github.com/user-attachments/assets/3fa96db9-4ac3-4654-a921-da66965d3dd8" width="220" alt="Hakem mobil uygulama ekranı 2" />
   <img src="https://github.com/user-attachments/assets/1ee1727f-9225-4a2d-838c-228708f8609f" width="220" alt="Hakem mobil uygulama ekranı 3" />
-  <img src="https://github.com/user-attachments/assets/691c93f6-98d8-4abe-a0d0-e2acbe89fedf" width="220" alt="Hakem mobil uygulama ekranı 4" />
 </p>
 
 ## Temel Özellikler
